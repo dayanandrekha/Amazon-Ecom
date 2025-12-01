@@ -1,3 +1,5 @@
+// This is a single-line comment
+println "Hello Groovy"
 pipeline {
   agent any
 
