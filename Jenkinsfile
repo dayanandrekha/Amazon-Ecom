@@ -47,7 +47,9 @@ pipeline {
                     sh 'ls -l target/'
                     sh '''
                     WAR_FILE=$(ls target/*.war)
-                    curl --upload-file $WAR_FILE --user admin:admin http://51.120.122.140:8081/manager/text/deploy?path=/Amazon-Ecom
+                    curl --upload-file target/Amazon.war --user jenkins:rekha123 \
+     http://51.120.122.140:8081/manager/text/deploy?path=/Amazon-Ecom
+
                     '''
                 }
             }
