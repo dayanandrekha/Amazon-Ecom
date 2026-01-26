@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        TOMCAT_URL = 'http://51.120.122.140:8080/manager/text'
+        TOMCAT_URL = 'http://51.120.122.140:8081/Amazon'
         TOMCAT_USER = 'admin'
         TOMCAT_PASSWORD = 'admin'
         WAR_FILE = 'target/Amazon-Ecom.war'
