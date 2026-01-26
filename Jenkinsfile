@@ -47,4 +47,9 @@ pipeline {
                 sh """
                 curl --upload-file ${WAR_FILE} \
                 --user ${TOMCAT_USER}:${TOMCAT_PASSWORD} \
-                ${TOMCAT_URL}/deploy_
+                ${TOMCAT_URL}/deploy?path=/${APP_NAME}&update=true
+                """
+            }
+        }
+    }
+}
