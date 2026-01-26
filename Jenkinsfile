@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         TOMCAT_URL = 'http://51.120.122.140:8081/manager/text'
-        TOMCAT_USER = 'admin'
-        TOMCAT_PASSWORD = 'admin'
+        TOMCAT_USER = 'jenkins'
+        TOMCAT_PASSWORD = 'rekha123'
         APP_NAME = 'Amazon-Ecom'
     }
 
@@ -47,8 +47,8 @@ pipeline {
                     sh 'ls -l target/'
                     sh '''
                     WAR_FILE=$(ls target/*.war)
-                    curl --upload-file target/Amazon.war --user jenkins:rekha123 \
-     http://51.120.122.140:8081/manager/text/deploy?path=/Amazon-Ecom
+                    curl --upload-file target/Amazon.war --user $TOMCAT_USER:$TOMCAT_PASSWORD \
+http://51.120.122.140:8081/manager/text/deploy?path=/Amazon-Ecom
 
                     '''
                 }
