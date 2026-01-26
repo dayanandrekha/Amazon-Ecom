@@ -49,7 +49,8 @@ pipeline {
             WAR_FILE=$(ls target/*.war)
             curl --upload-file $WAR_FILE --user admin:admin http://51.120.122.140:8081/manager/text/deploy?path=/Amazon-Ecom
             '''
-            }
         }
     }
+}
+
 }
