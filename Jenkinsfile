@@ -18,27 +18,33 @@ pipeline {
             }
         }
 
-        stage('Clean') {
+        stage('Clean'){
             steps {
+                ('Amazon'){
                 sh 'mvn clean'
             }
+        }
         }
 
         stage('Compile') {
             steps {
+                ('Amazon'){
                 sh 'mvn compile'
             }
         }
-
+        }
         stage('Test') {
             steps {
+                ('Amazon')
+                {
                 sh 'mvn test'
+            }
             }
         }
 
         stage('Build') {
     steps {
-        dir('Amazon-Ecom/Amazon-Web') {
+        dir('Amazon') {
             sh 'mvn clean install'
         }
     }
@@ -46,7 +52,7 @@ pipeline {
 
 stage('Deploy to Tomcat') {
     steps {
-        dir('Amazon-Ecom/Amazon-Web') {
+        dir('Amazon') {
             echo "Deploying WAR to Tomcat..."
             sh """
             curl --upload-file target/Amazon.war \
