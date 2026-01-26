@@ -18,46 +18,36 @@ pipeline {
 
         stage('Clean') {
             steps {
-                dir('Amazon-Ecom/Amazon-Web') {
-                    sh 'mvn clean'
-                }
+                sh 'mvn clean'
             }
         }
 
         stage('Compile') {
             steps {
-                dir('Amazon-Ecom/Amazon-Web') {
-                    sh 'mvn compile'
-                }
+                sh 'mvn compile'
             }
         }
 
         stage('Test') {
             steps {
-                dir('Amazon-Ecom/Amazon-Web') {
-                    sh 'mvn test'
-                }
+                sh 'mvn test'
             }
         }
 
         stage('Build') {
             steps {
-                dir('Amazon-Ecom/Amazon-Web') {
-                    sh 'mvn clean install'
-                }
+                sh 'mvn clean install'
             }
         }
 
         stage('Deploy to Tomcat') {
             steps {
-                dir('Amazon-Ecom/Amazon-Web') {
-                    echo "Deploying WAR to Tomcat..."
-                    sh """
-                    curl --upload-file target/Amazon.war \
-                    --user ${TOMCAT_USER}:${TOMCAT_PASSWORD} \
-                    ${TOMCAT_URL}/deploy?path=/${APP_NAME}&update=true
-                    """
-                }
+                echo "Deploying WAR to Tomcat..."
+                sh """
+                curl --upload-file target/Amazon.war \
+                --user ${TOMCAT_USER}:${TOMCAT_PASSWORD} \
+                ${TOMCAT_URL}/deploy?path=/${APP_NAME}&update=true
+                """
             }
         }
     }
