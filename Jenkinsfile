@@ -41,16 +41,17 @@ pipeline {
         }
 
         stage('Deploy to Tomcat') {
-    steps {
-        dir('Amazon-Web') { // change directory to web module
-            sh 'mvn clean package'
-            sh 'ls -l target/'
-            sh '''
-            WAR_FILE=$(ls target/*.war)
-            curl --upload-file $WAR_FILE --user admin:admin http://51.120.122.140:8081/manager/text/deploy?path=/Amazon-Ecom
-            '''
+            steps {
+                dir('Amazon-Web') { // change directory to web module
+                    sh 'mvn clean package'
+                    sh 'ls -l target/'
+                    sh '''
+                    WAR_FILE=$(ls target/*.war)
+                    curl --upload-file $WAR_FILE --user admin:admin http://51.120.122.140:8081/manager/text/deploy?path=/Amazon-Ecom
+                    '''
+                }
+            }
         }
-    }
-}
 
-}
+    } // closes stages
+} // closes pipeline
