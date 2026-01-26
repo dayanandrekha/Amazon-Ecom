@@ -2,12 +2,13 @@ pipeline {
     agent any
 
     environment {
-        TOMCAT_URL = 'http://51.120.122.140:8081/Amazon'
-        TOMCAT_USER = 'admin'
-        TOMCAT_PASSWORD = 'admin'
-        WAR_FILE = 'Amazon-Ecom/Amazon-Web/target/Amazon.war'
-        APP_NAME = 'Amazon-Ecom'
-    }
+    TOMCAT_URL = 'http://51.120.122.140:8081/manager/text'
+    TOMCAT_USER = 'admin'
+    TOMCAT_PASSWORD = 'admin'
+    WAR_FILE = "${WORKSPACE}/Amazon-Ecom/Amazon-Web/target/Amazon.war"  // ✅ full path
+    APP_NAME = 'Amazon-Ecom'
+}
+
 
     stages {
 
